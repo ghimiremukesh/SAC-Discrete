@@ -1,3 +1,5 @@
+# SAC-Discrete Implementation forked from https://github.com/p-christ/Deep-Reinforcement-Learning-Algorithms-with-PyTorch
+
 # Deep Reinforcement Learning Algorithms with PyTorch
 
 ![Travis CI](https://travis-ci.org/p-christ/Deep-Reinforcement-Learning-Algorithms-with-PyTorch.svg?branch=master)
