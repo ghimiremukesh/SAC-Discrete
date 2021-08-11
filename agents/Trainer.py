@@ -81,6 +81,8 @@ class Trainer(object):
             
             # save the model 
             agent.save(agent_name+'.h5')
+
+            
             self.print_two_empty_lines()
             agent_results.append([game_scores, rolling_scores, len(rolling_scores), -1 * max(rolling_scores), time_taken])
             if self.config.visualise_individual_results:

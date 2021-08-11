@@ -325,13 +325,14 @@ class Base_Agent(object):
             if key not in hyperparameters.keys():
                 hyperparameters[key] = default_hyperparameter_choices[key]
 
-        return NN(input_dim=input_dim, layers_info=hyperparameters["linear_hidden_units"] + [output_dim],
+        model = NN(input_dim=input_dim, layers_info=hyperparameters["linear_hidden_units"] + [output_dim],
                   output_activation=hyperparameters["final_layer_activation"],
                   batch_norm=hyperparameters["batch_norm"], dropout=hyperparameters["dropout"],
                   hidden_activations=hyperparameters["hidden_activations"], initialiser=hyperparameters["initialiser"],
                   columns_of_data_to_be_embedded=hyperparameters["columns_of_data_to_be_embedded"],
                   embedding_dimensions=hyperparameters["embedding_dimensions"], y_range=hyperparameters["y_range"],
                   random_seed=seed).to(self.device)
+        return model 
 
     def turn_on_any_epsilon_greedy_exploration(self):
         """Turns off all exploration with respect to the epsilon greedy exploration strategy"""
@@ -372,10 +373,6 @@ class Base_Agent(object):
             to_model.data.copy_(from_model.data.clone())
 
     ## try to load and save the model weights
-    def load(self, name):
-        self.model.load_weights(name)
-
-
     def save(self, name):
-        self.model.save_weights(name)
+        torch.save(self.model.state_dict(), name)
     
