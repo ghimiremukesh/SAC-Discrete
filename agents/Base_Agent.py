@@ -370,3 +370,12 @@ class Base_Agent(object):
         """Copies model parameters from from_model to to_model"""
         for to_model, from_model in zip(to_model.parameters(), from_model.parameters()):
             to_model.data.copy_(from_model.data.clone())
+
+    ## try to load and save the model weights
+    def load(self, name):
+        self.model.load_weights(name)
+
+
+    def save(self, name):
+        self.model.save_weights(name)
+    

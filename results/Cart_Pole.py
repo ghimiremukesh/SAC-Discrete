@@ -82,7 +82,7 @@ if __name__ == "__main__":
     trainer = Trainer(config, AGENTS)
     trainer.run_games_for_agents()
 
-
+SAC_Discrete.save
 
 
 
