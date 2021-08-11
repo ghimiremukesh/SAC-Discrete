@@ -179,7 +179,7 @@ class Base_Agent(object):
         self.episode_rewards.append(self.reward)
         self.episode_next_states.append(self.next_state)
         self.episode_dones.append(self.done)
-
+    
     def run_n_episodes(self, num_episodes=None, show_whether_achieved_goal=True, save_and_print_results=True):
         """Runs game to completion n times and then summarises results and saves model (if asked to)"""
         if num_episodes is None: num_episodes = self.config.num_episodes_to_run
@@ -372,7 +372,5 @@ class Base_Agent(object):
         for to_model, from_model in zip(to_model.parameters(), from_model.parameters()):
             to_model.data.copy_(from_model.data.clone())
 
-    ## try to load and save the model weights
-    def save(self, name):
-        torch.save(self.model.state_dict(), name)
+
     
