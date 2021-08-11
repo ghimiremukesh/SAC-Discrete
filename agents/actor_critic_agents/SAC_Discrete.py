@@ -89,3 +89,7 @@ class SAC_Discrete(SAC):
         log_action_probabilities = torch.sum(log_action_probabilities * action_probabilities, dim=1)
         return policy_loss, log_action_probabilities
 
+    def save(self):
+        torch.save(self.critic_local.state_dict(), 'critic-local')
+        torch.save(self.critic_local_2.state_dict(), 'critic-local-2')
+        torch.save(self.actor_local.state_dict(), 'actor-local')

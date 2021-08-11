@@ -182,8 +182,8 @@ class Base_Agent(object):
         self.episode_dones.append(self.done)
     
         ## try to load and save the model weights
-    def save(self, name):
-        torch.save(self.model.state_dict(), name)
+    #def save(self):
+    #    torch.save(self.model.state_dict(), self.config.hyperparameters["key_to_use"])
 
     def run_n_episodes(self, num_episodes=None, show_whether_achieved_goal=True, save_and_print_results=True):
         """Runs game to completion n times and then summarises results and saves model (if asked to)"""
@@ -196,7 +196,7 @@ class Base_Agent(object):
         time_taken = time.time() - start
         if show_whether_achieved_goal: self.show_whether_achieved_goal()
         if self.config.save_model: self.locally_save_policy()
-        self.save("name")
+        #self.save()
         return self.game_full_episode_scores, self.rolling_results, time_taken
         
 
