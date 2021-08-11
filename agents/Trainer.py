@@ -78,6 +78,9 @@ class Trainer(object):
             print("RANDOM SEED " , agent_config.seed)
             game_scores, rolling_scores, time_taken = agent.run_n_episodes()
             print("Time taken: {}".format(time_taken), flush=True)
+            
+            # save the model 
+            agent.save(agent_name+'.h5')
             self.print_two_empty_lines()
             agent_results.append([game_scores, rolling_scores, len(rolling_scores), -1 * max(rolling_scores), time_taken])
             if self.config.visualise_individual_results:
@@ -85,6 +88,7 @@ class Trainer(object):
                 plt.show()
             agent_round += 1
         self.results[agent_name] = agent_results
+
 
     def environment_has_changeable_goals(self, env):
         """Determines whether environment is such that for each episode there is a different goal or not"""
