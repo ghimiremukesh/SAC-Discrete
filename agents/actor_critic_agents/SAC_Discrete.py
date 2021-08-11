@@ -89,7 +89,3 @@ class SAC_Discrete(SAC):
         log_action_probabilities = torch.sum(log_action_probabilities * action_probabilities, dim=1)
         return policy_loss, log_action_probabilities
 
-    ## try to load and save the model weights
-    def save(self, name):
-        import pdb; pdb.set_trace()
-        torch.save(self.model.state_dict(), name)

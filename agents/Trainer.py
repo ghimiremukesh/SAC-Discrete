@@ -78,11 +78,6 @@ class Trainer(object):
             print("RANDOM SEED " , agent_config.seed)
             game_scores, rolling_scores, time_taken = agent.run_n_episodes()
             print("Time taken: {}".format(time_taken), flush=True)
-            
-            # save the model 
-            agent.save("name")
-
-
             self.print_two_empty_lines()
             agent_results.append([game_scores, rolling_scores, len(rolling_scores), -1 * max(rolling_scores), time_taken])
             if self.config.visualise_individual_results:
